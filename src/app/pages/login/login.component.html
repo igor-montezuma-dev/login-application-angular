@@ -2,4 +2,26 @@
   title="Acesse sua conta"
   primaryBtnText="Acesse agora"
   secondaryBtnText="Registre-se agora"
-></app-default-login-layout>
+>
+  <form [formGroup]="loginForm">
+    <app-primary-input
+      formControlName="email"
+      inputName="email"
+      placeholder="Informe seu e-mail"
+      type="email"
+      label="E-mail"
+    >
+      <img src="/assets/svg/mail.svg" alt="Campo de email" />
+    </app-primary-input>
+    <app-primary-input
+      formControlName="password"
+      inputName="password"
+      placeholder="Informe seua senha"
+      type="password"
+      label="Senha"
+    >
+      <img src="/assets/svg/locker.svg" alt="Campo de email" />
+    </app-primary-input>
+    <span>Esqueceu a senha?</span>
+  </form>
+</app-default-login-layout>
