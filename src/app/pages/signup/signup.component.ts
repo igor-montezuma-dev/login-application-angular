@@ -20,16 +20,21 @@ import { LoginService } from '../../services/login.service';
     ReactiveFormsModule,
   ],
   providers: [LoginService],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss',
 })
-export class LoginComponent {
-  loginForm!: FormGroup;
+export class SignUpComponent {
+  signupForm!: FormGroup;
 
   constructor(private router: Router, private loginService: LoginService,private toastr: ToastrService) {
-    this.loginForm = new FormGroup({
+    this.signupForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+      passwordConfirm: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
       ]),
@@ -37,7 +42,7 @@ export class LoginComponent {
   }
 
   submit() {
-    const { email, password } = this.loginForm.value;
+    const { email, password } = this.signupForm.value;
     this.loginService.login(email, password).subscribe({
       next: () =>  {
         this.toastr.success('Login efetuado com sucesso!')
@@ -49,6 +54,6 @@ export class LoginComponent {
   }
 
   navigate() {
-    this.router.navigate(['/signup']);
+    this.router.navigate(['/login']);
   }
 }

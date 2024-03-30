@@ -74,6 +74,11 @@ main {
           rgba(148.23004603385925, 64.33935597538948, 255, 0.20000000298023224);
         cursor: pointer;
 
+        &:disabled {
+          opacity: 0.8;
+          cursor: not-allowed;
+        }
+
         &:hover{
           transform: scale(1.2);
           transition: all 0.5s ease-in-out;

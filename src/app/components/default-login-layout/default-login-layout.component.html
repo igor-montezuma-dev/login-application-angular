@@ -5,7 +5,11 @@
     <ng-content #name></ng-content>
 
     <div class="btn-wrapper">
-      <button class="btn-primary" (click)="submit()">
+      <button
+        class="btn-primary"
+        (click)="submit()"
+        [disabled]="disablePrimaryBtn"
+      >
         {{ primaryBtnText }}
       </button>
       <div class="divider">
